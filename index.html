@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thư viện Toán THPT</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .header {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    .header p {
+      margin: 10px 0 0;
+      font-size: 18px;
+    }
+
+    .container {
+      background-color: #f1f1f1;
+      padding: 30px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 250px;
+      max-width: 300px;
+      margin: 10px;
+      background-color: #f8f8f8;
+    }
+
+    .column h2 {
+      color: red;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .tool-button {
+      display: block;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      margin: 10px auto;
+      padding: 12px 16px;
+      width: 90%;
+      border-radius: 8px;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    .tool-button:hover {
+      background-color: #2980b9;
+    }
+
+    .avatar {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+    }
+
+    .avatar img {
+      width: 40px;
+      height: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #f5f5f5;
+      font-size: 14px;
+      color: #333;
+    }
+    </style>
+    
+</head>
+<body>
+
+  <!-- Phần đầu -->
+  <div class="header">
+    <div class="avatar">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Ảnh đại diện">
+    </div>
+    <h1><strong>Lê Văn Quý</strong></h1>
+    <p>Giáo viên Toán THPT Bình Sơn, Quảng Ngãi – Chia sẻ tool ứng dụng trong giảng dạy, tài liệu trong bài giảng</p>
+  </div>
+
+  <!-- Phần nội dung -->
+  <div class="container">
+    <!-- Cột 1 -->
+    <div class="column">
+      <h2>CÁC TOOL ỨNG DỤNG</h2>
+      <a href="#" class="tool-button">🧭 Mô hình không gian</a>
+      <a href="#" class="tool-button">1. 📘 Vẽ đồ thị hàm số</a>
+    </div>
+
+    <!-- Cột 2 -->
+    <div class="column">
+      <h2>ĐỀ THI BỘ GD</h2>
+      <a href="#" class="tool-button">📊 Thể tích khối tròn xoay 2D-3D</a>
+      <a href="#" class="tool-button">▶️ Mô hình mặt phẳng</a>
+    </div>
+
+    <!-- Cột 3 -->
+    <div class="column">
+      <h2>TÀI LIỆU</h2>
+      <a href="#" class="tool-button">💬 Kho đề của Tỉnh Quảng Ngãi</a>
+      <a href="#" class="tool-button">🧭 Mô hình không gian</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    © 2025 Lê Văn Quý. All rights reserved.
+  </footer>
+</body>
+
+</html>
