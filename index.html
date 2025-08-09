@@ -1,169 +1,373 @@
 
+
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thư viện Toán THPT</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đề Kiểm Tra Định Kì Khối 10</title>
   <style>
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f5f5f5;
+      padding: 0;
+      background: #f2f9ff;
+      color: #2c3e50;
     }
 
-    .header {
-      background-color: #2c3e50;
-      color: white;
+    header {
       text-align: center;
       padding: 40px 20px 20px;
     }
 
-    .header h1 {
-      margin: 0;
-      font-size: 32px;
+    header h1 {
+      color: #2c3e90;
+      font-size: 36px;
+      margin-bottom: 10px;
     }
 
-    .header p {
-      margin: 10px 0 0;
-      font-size: 18px;
+    header blockquote {
+      font-style: italic;
+      color: #34495e;
+      font-size: 20px;
     }
 
-    .container {
-      background-color: #f1f1f1;
-      padding: 30px 10px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    header blockquote span {
+      color: #2c3e90;
+      font-weight: bold;
     }
 
-    .column {
-      flex: 1;
-      min-width: 250px;
-      max-width: 300px;
-      margin: 10px;
-      background-color: #f8f8f8;
-    }
-
-    .column h2 {
-      color: red;
+    .button-bar {
       text-align: center;
       margin-bottom: 20px;
     }
 
-    .tool-button {
-      display: block;
-      background-color: #3498db;
+    .button-bar button {
+      background-color: #e91e63;
       color: white;
-      text-decoration: none;
-      margin: 10px auto;
-      padding: 12px 16px;
-      width: 90%;
-      border-radius: 8px;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
       font-size: 16px;
-      text-align: left;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
     }
 
-    .tool-button:hover {
-      background-color: #2980b9;
+    .button-bar button:hover {
+      background-color: #c2185b;
+      transform: scale(1.05);
     }
 
-    .avatar {
-      position: absolute;
-      top: 20px;
-      right: 30px;
+    .section {
+      display: none;
     }
 
-    .avatar img {
-      width: 40px;
-      height: 40px;
+    .section.active {
+      display: block;
     }
 
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  
-    .footer {
+    .grade-label {
+      font-size: 24px;
+      font-weight: bold;
+      color: #e91e63;
       text-align: center;
-      padding: 20px;
-      background-color: #f5f5f5;
-      font-size: 14px;
-      color: #333;
+      margin: 30px 0 10px;
     }
-    </style>
-    
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 20px 40px;
+    }
+
+    .column {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      flex: 0 1 300px;
+      padding: 20px;
+      border-top: 8px solid #e91e63;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .column h2 {
+      text-align: center;
+      color: #e91e63;
+      margin-bottom: 20px;
+    }
+
+    .column h3 {
+      color: #2c3e90;
+      margin-bottom: 5px;
+    }
+
+    .item {
+      margin-left: 15px;
+      margin-bottom: 10px;
+    }
+
+    .official { color: orange; font-weight: bold; }
+    .answer { color: orangered; font-weight: bold; }
+    .link { color: teal; text-decoration: none; }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media screen and (max-width: 900px) {
+      .column { flex: 0 1 45%; }
+    }
+
+    @media screen and (max-width: 600px) {
+      .column { flex: 1 1 100%; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Phần đầu -->
-  <div class="header">
-    <div class="avatar">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Ảnh đại diện">
+<header>
+  <h1>📚 4 BỘ SÁCH GIÁO KHOA CHƯƠNG TRÌNH 2018</h1>
+  <blockquote>
+    "<span>Toán học đôi khi cho thấy sự hiệu quả đến vô lý</span>"<br>
+    – Eugene Wigner (Nobel Vật lý 1963) –
+  </blockquote>
+</header>
+
+<div class="button-bar">
+  <button onclick="showSection('kn')">Kết nối với cuộc sống</button>
+  <button onclick="showSection('cd')">Cánh diều</button>
+  <button onclick="showSection('ctst')">Chân trờ sáng tạo</button>
+  <button onclick="showSection('ckp')">Cùng khám phá</button>
+</div>
+
+<div id="sections">
+  <div class="section" id="kn">
+    <div class="grade-label">Kết nối với cuộc sống</div>
+    <div class="container">
+      <div class="column">
+        <h2>Lớp 10</h2>
+             <div class="item">📄 <span class="official">Sách giáo khoa tập 1</span> ⬇ <a class="link" href="sgkkn10t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách giáo khoa tập 2</span> ⬇ <a class="link" href="sgkkn10t2.pdf">Tải tài liệu</a></div>
+       <div class="item">📄 <span class="official">Sách bài tập tập 1</span> ⬇ <a class="link" href="sbtkn10t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách bài tập tập 2</span> ⬇ <a class="link" href="sbtkn10t2.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách chuyên đề</span> ⬇ <a class="link" href="cdkn10.pdf">Tải tài liệu</a></div>
+
+<div class="item">📄 <span class="answer">Sách giáo viên</span> ⬇ <a class="link" href="sgvkn10.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách giáo viên chuyên đề</span> ⬇ <a class="link" href="sgvcdkn10.pdf">Tải tài liệu</a></div>
+
+ </div>
+
+      <div class="column">
+        <h2>Lớp 11</h2>
+
+ <div class="item">📄 <span class="official">Sách giáo khoa tập 1</span> ⬇ <a class="link" href="sgkkn11t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách giáo khoa tập 2</span> ⬇ <a class="link" href="sgkkn11t2.pdf">Tải tài liệu</a></div>
+       <div class="item">📄 <span class="official">Sách bài tập tập 1</span> ⬇ <a class="link" href="sbtkn11t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách bài tập tập 2</span> ⬇ <a class="link" href="sbtkn11t2.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách chuyên đề</span> ⬇ <a class="link" href="cdkn11.pdf">Tải tài liệu</a></div>
+
+<div class="item">📄 <span class="answer">Sách giáo viên</span> ⬇ <a class="link" href="sgvkn11.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách giáo viên chuyên đề</span> ⬇ <a class="link" href="sgvcdkn11.pdf">Tải tài liệu</a></div>
+
+            
+
+ </div>
+
+      <div class="column">
+       
+   <h2>Lớp 12</h2>
+             <div class="item">📄 <span class="official">Sách giáo khoa tập 1</span> ⬇ <a class="link" href="sgkkn12t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách giáo khoa tập 2</span> ⬇ <a class="link" href="sgkkn12t2.pdf">Tải tài liệu</a></div>
+       <div class="item">📄 <span class="official">Sách bài tập tập 1</span> ⬇ <a class="link" href="sbtkn12t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách bài tập tập 2</span> ⬇ <a class="link" href="sbtkn12t2.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách chuyên đề</span> ⬇ <a class="link" href="cdkn12.pdf">Tải tài liệu</a></div>
+
+<div class="item">📄 <span class="answer">Sách giáo viên</span> ⬇ <a class="link" href="sgvkn12.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách giáo viên chuyên đề</span> ⬇ <a class="link" href="sgvcdkn12.pdf">Tải tài liệu</a></div>
+
+
+ </div>
+    
+
+ </div>
     </div>
-    <h1><strong>Lê Văn Quý</strong></h1>
-    <p>Giáo viên Toán THPT Bình Sơn, Quảng Ngãi – Chia sẻ tool ứng dụng trong giảng dạy, tài liệu trong bài giảng</p>
   </div>
 
-  <!-- Phần nội dung -->
-  <div class="container">
-    <!-- Cột 1 -->
-    <div class="column">
-      <h2>KẾT NỐI</h2>
-      <a href="#" class="tool-button">🧭 Sách giáo khoa 10 tập 1</a>
-      <a href="#" class="tool-button">🧭 Sách giáo khoa 10 tập 2</a>
-        <a href="#" class="tool-button">🧭 Sách giáo khoa 11 tập 1</a>
-        <a href="#" class="tool-button">🧭 Sách giáo khoa 11 tập 2</a>
-        <a href="#" class="tool-button">🧭 Sách giáo khoa 12 tập 1</a>
-        <a href="#" class="tool-button">🧭 Sách giáo khoa 12 tập 2</a>
-        <a href="#" class="tool-button">🧭 Sách giáo viên 10 </a>
-        <a href="#" class="tool-button">🧭 Sách giáo viên 11</a>
-        <a href="#" class="tool-button">🧭 Sách giáo viên 12</a>
-        <a href="#" class="tool-button">🧭 Sách chuyên đề 10</a>
-        <a href="#" class="tool-button">🧭 Sách chuyên đề 11</a>
-        <a href="#" class="tool-button">🧭 Sách chuyên đề 12</a>
-    </div>
+  <div class="section" id="cd">
+    <div class="grade-label">Cách diều</div>
+    <div class="container">
+      <div class="column"><h2>Lớp 10</h2>
 
-    <!-- Cột 2 -->
-    <div class="column">
-      <h2>CHÂN TRỜI SÁNG TẠO</h2>
-      <a href="#" class="tool-button">🧭 Sách giáo khoa 10 tập 1</a>
-      <a href="#" class="tool-button">🧭 Sách giáo khoa 10 tập 2</a>
-        <a href="#" class="tool-button">🧭 Sách giáo khoa 11 tập 1</a>
-        <a href="#" class="tool-button">🧭 Sách giáo khoa 11 tập 2</a>
-        <a href="#" class="tool-button">🧭 Sách giáo khoa 12 tập 1</a>
-        <a href="#" class="tool-button">🧭 Sách giáo khoa 12 tập 2</a>
-        <a href="#" class="tool-button">🧭 Sách giáo viên 10 </a>
-        <a href="#" class="tool-button">🧭 Sách giáo viên 11</a>
-        <a href="#" class="tool-button">🧭 Sách giáo viên 12</a>
-        <a href="#" class="tool-button">🧭 Sách chuyên đề 10</a>
-        <a href="#" class="tool-button">🧭 Sách chuyên đề 11</a>
-        <a href="#" class="tool-button">🧭 Sách chuyên đề 12</a>
-    </div>
+             <div class="item">📄 <span class="official">Sách giáo khoa tập 1</span> ⬇ <a class="link" href="sgkkn10t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách giáo khoa tập 2</span> ⬇ <a class="link" href="sgkkn10t2.pdf">Tải tài liệu</a></div>
+       <div class="item">📄 <span class="official">Sách bài tập tập 1</span> ⬇ <a class="link" href="sbtkn10t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách bài tập tập 2</span> ⬇ <a class="link" href="sbtkn10t2.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách chuyên đề</span> ⬇ <a class="link" href="cdkn10.pdf">Tải tài liệu</a></div>
 
-    <!-- Cột 3 -->
-    <div class="column">
-      <h2>CÁNH DIỀU</h2>
-       <a href="#" class="tool-button">🧭 Sách giáo khoa 10 tập 1</a>
-      <a href="#" class="tool-button">🧭 Sách giáo khoa 10 tập 2</a>
-        <a href="#" class="tool-button">🧭 Sách giáo khoa 11 tập 1</a>
-        <a href="#" class="tool-button">🧭 Sách giáo khoa 11 tập 2</a>
-        <a href="#" class="tool-button">🧭 Sách giáo khoa 12 tập 1</a>
-        <a href="#" class="tool-button">🧭 Sách giáo khoa 12 tập 2</a>
-        <a href="#" class="tool-button">🧭 Sách giáo viên 10 </a>
-        <a href="#" class="tool-button">🧭 Sách giáo viên 11</a>
-        <a href="#" class="tool-button">🧭 Sách giáo viên 12</a>
-        <a href="#" class="tool-button">🧭 Sách chuyên đề 10</a>
-        <a href="#" class="tool-button">🧭 Sách chuyên đề 11</a>
-        <a href="#" class="tool-button">🧭 Sách chuyên đề 12</a>
+<div class="item">📄 <span class="answer">Sách giáo viên</span> ⬇ <a class="link" href="sgvkn10.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách giáo viên chuyên đề</span> ⬇ <a class="link" href="sgvcdkn10.pdf">Tải tài liệu</a></div>
+
+ </div>
+
+      <div class="column">
+        <h2>Lớp 11</h2>
+
+ <div class="item">📄 <span class="official">Sách giáo khoa tập 1</span> ⬇ <a class="link" href="sgkkn11t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách giáo khoa tập 2</span> ⬇ <a class="link" href="sgkkn11t2.pdf">Tải tài liệu</a></div>
+       <div class="item">📄 <span class="official">Sách bài tập tập 1</span> ⬇ <a class="link" href="sbtkn11t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách bài tập tập 2</span> ⬇ <a class="link" href="sbtkn11t2.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách chuyên đề</span> ⬇ <a class="link" href="cdkn11.pdf">Tải tài liệu</a></div>
+
+<div class="item">📄 <span class="answer">Sách giáo viên</span> ⬇ <a class="link" href="sgvkn11.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách giáo viên chuyên đề</span> ⬇ <a class="link" href="sgvcdkn11.pdf">Tải tài liệu</a></div>
+
+            
+
+ </div>
+
+      <div class="column">
+       
+   <h2>Lớp 12</h2>
+             <div class="item">📄 <span class="official">Sách giáo khoa tập 1</span> ⬇ <a class="link" href="sgkcd12t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách giáo khoa tập 2</span> ⬇ <a class="link" href="sgkcdn12t2.pdf">Tải tài liệu</a></div>
+       <div class="item">📄 <span class="official">Sách bài tập tập 1</span> ⬇ <a class="link" href="sbtcd12t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách bài tập tập 2</span> ⬇ <a class="link" href="sbtcd12t2.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách chuyên đề</span> ⬇ <a class="link" href="cdcd12.pdf">Tải tài liệu</a></div>
+
+<div class="item">📄 <span class="answer">Sách giáo viên</span> ⬇ <a class="link" href="sgvcd12.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách giáo viên chuyên đề</span> ⬇ <a class="link" href="sgvcdcd12.pdf">Tải tài liệu</a></div>
+ 
+</div>
+
+ </div>
+  </div>
+
+  <div class="section" id="ctst">
+    <div class="grade-label">Chân trời sáng tạo</div>
+    <div class="container">
+      <div class="column"><h2>Lớp 10 </h2>
+
+
+             <div class="item">📄 <span class="official">Sách giáo khoa tập 1</span> ⬇ <a class="link" href="sgkctst10t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách giáo khoa tập 2</span> ⬇ <a class="link" href="sgkctst10t2.pdf">Tải tài liệu</a></div>
+       <div class="item">📄 <span class="official">Sách bài tập tập 1</span> ⬇ <a class="link" href="sbtctst10t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách bài tập tập 2</span> ⬇ <a class="link" href="sbtkn10t2.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách chuyên đề</span> ⬇ <a class="link" href="cdctst10.pdf">Tải tài liệu</a></div>
+
+<div class="item">📄 <span class="answer">Sách giáo viên</span> ⬇ <a class="link" href="sgvctst10.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách giáo viên chuyên đề</span> ⬇ <a class="link" href="sgvcdctst10.pdf">Tải tài liệu</a></div>
+
+ </div>
+
+      <div class="column">
+        <h2>Lớp 11</h2>
+
+ <div class="item">📄 <span class="official">Sách giáo khoa tập 1</span> ⬇ <a class="link" href="sgkctst11t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách giáo khoa tập 2</span> ⬇ <a class="link" href="sgkctst11t2.pdf">Tải tài liệu</a></div>
+       <div class="item">📄 <span class="official">Sách bài tập tập 1</span> ⬇ <a class="link" href="sbtctst11t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách bài tập tập 2</span> ⬇ <a class="link" href="sbtctst11t2.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách chuyên đề</span> ⬇ <a class="link" href="cdctst11.pdf">Tải tài liệu</a></div>
+
+<div class="item">📄 <span class="answer">Sách giáo viên</span> ⬇ <a class="link" href="sgvctst11.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách giáo viên chuyên đề</span> ⬇ <a class="link" href="sgvcdctst11.pdf">Tải tài liệu</a></div>
+
+        
+
+ </div>
+
+      <div class="column">
+       
+   <h2>Lớp 12</h2>
+             <div class="item">📄 <span class="official">Sách giáo khoa tập 1</span> ⬇ <a class="link" href="sgkctst12t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách giáo khoa tập 2</span> ⬇ <a class="link" href="sgkctst12t2.pdf">Tải tài liệu</a></div>
+       <div class="item">📄 <span class="official">Sách bài tập tập 1</span> ⬇ <a class="link" href="sbtctst12t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách bài tập tập 2</span> ⬇ <a class="link" href="sbtctst12t2.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách chuyên đề</span> ⬇ <a class="link" href="cdctst12.pdf">Tải tài liệu</a></div>
+
+<div class="item">📄 <span class="answer">Sách giáo viên</span> ⬇ <a class="link" href="sgvctst12.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách giáo viên chuyên đề</span> ⬇ <a class="link" href="sgvcdctst12.pdf">Tải tài liệu</a></div>
+
+
+
+ </div>
     </div>
   </div>
 
-  <footer class="footer">
-    © 2025 Lê Văn Quý. All rights reserved.
-  </footer>
+  <div class="section" id="ckp">
+    <div class="grade-label">Cùng Khám phá</div>
+    <div class="container">
+      <div class="column"><h2>Lớp 10</h2>
+
+
+             <div class="item">📄 <span class="official">Sách giáo khoa tập 1</span> ⬇ <a class="link" href="sgkckp10t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách giáo khoa tập 2</span> ⬇ <a class="link" href="sgkckp10t2.pdf">Tải tài liệu</a></div>
+       <div class="item">📄 <span class="official">Sách bài tập tập 1</span> ⬇ <a class="link" href="sbtckp10t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách bài tập tập 2</span> ⬇ <a class="link" href="sbtckp10t2.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách chuyên đề</span> ⬇ <a class="link" href="cdckp10.pdf">Tải tài liệu</a></div>
+
+<div class="item">📄 <span class="answer">Sách giáo viên</span> ⬇ <a class="link" href="sgvckp10.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách giáo viên chuyên đề</span> ⬇ <a class="link" href="sgvcdckp10.pdf">Tải tài liệu</a></div>
+
+ </div>
+
+      <div class="column">
+        <h2>Lớp 11</h2>
+
+ <div class="item">📄 <span class="official">Sách giáo khoa tập 1</span> ⬇ <a class="link" href="sgkckp11t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách giáo khoa tập 2</span> ⬇ <a class="link" href="sgkckp11t2.pdf">Tải tài liệu</a></div>
+       <div class="item">📄 <span class="official">Sách bài tập tập 1</span> ⬇ <a class="link" href="sbtckp11t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách bài tập tập 2</span> ⬇ <a class="link" href="sbtckp11t2.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách chuyên đề</span> ⬇ <a class="link" href="cdckp11.pdf">Tải tài liệu</a></div>
+
+<div class="item">📄 <span class="answer">Sách giáo viên</span> ⬇ <a class="link" href="sgvckp11.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách giáo viên chuyên đề</span> ⬇ <a class="link" href="sgvcdckp11.pdf">Tải tài liệu</a></div>
+
+           
+
+ </div>
+
+      <div class="column">
+       
+   <h2>Lớp 12</h2>
+             <div class="item">📄 <span class="official">Sách giáo khoa tập 1</span> ⬇ <a class="link" href="sgkckp12t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách giáo khoa tập 2</span> ⬇ <a class="link" href="sgkckp12t2.pdf">Tải tài liệu</a></div>
+       <div class="item">📄 <span class="official">Sách bài tập tập 1</span> ⬇ <a class="link" href="sbtckp12t1.pdf">Tải tài liệu</a></div>
+        <div class="item">📄 <span class="answer">Sách bài tập tập 2</span> ⬇ <a class="link" href="sbtckp12t2.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách chuyên đề</span> ⬇ <a class="link" href="cdckp12.pdf">Tải tài liệu</a></div>
+
+<div class="item">📄 <span class="answer">Sách giáo viên</span> ⬇ <a class="link" href="sgvckp12.pdf">Tải tài liệu</a></div>
+<div class="item">📄 <span class="answer">Sách giáo viên chuyên đề</span> ⬇ <a class="link" href="sgvcckpn12.pdf">Tải tài liệu</a></div>
+
+
+
+
+
+ </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+  showSection('gk1');
+</script>
+
 </body>
-
+<footer class="footer"><center> 
+    © 2025 Lê Văn Quý.
+<P>Giáo viên THPT Bình Sơn, Quãng Ngãi</p>
+     </center>
+  </footer>
 </html>
